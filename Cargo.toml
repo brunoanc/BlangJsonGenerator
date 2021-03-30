@@ -1,0 +1,20 @@
+[package]
+name = "blang_json_generator"
+version = "1.0.0"
+authors = ["PowerBall253 <brunoanconasala@gmail.com>"]
+edition = "2018"
+
+[[bin]]
+name = "BlangJsonGenerator"
+path = "src/blang_json_generator.rs"
+
+[dependencies]
+getrandom = "*"
+sha2 = "*"
+hmac = "*"
+aes = "*"
+block-modes = "*"
+text_io = "*"
+serde = "*"
+serde_jsonrc = "*"
+serde_derive = "*"
