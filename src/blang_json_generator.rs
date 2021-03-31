@@ -554,7 +554,7 @@ fn main() {
             }
         }
 
-        println!("\nPress any key to continue...");
+        println!("\nPress enter to continue...");
         let mut stdin = io::stdin();
         let _ = stdin.read(&mut [0u8]).unwrap();
     }
