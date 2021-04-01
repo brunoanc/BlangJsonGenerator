@@ -147,9 +147,9 @@ fn generate_blang_json(path: String, internal_path: String, out_path: String) {
         return;
     }
 
-    let mut file = File::open(&path).expect("Failed to open file for reading.");
+    let mut file = File::open(&path).expect(format!("Failed to open {} for reading.", path).as_str());
     let mut file_data: Vec<u8> = Vec::new();
-    file.read_to_end(&mut file_data).expect("Failed to read file.");
+    file.read_to_end(&mut file_data).expect(format!("Failed to read from {}.", path).as_str());
 
     let blang_bytes = id_crypt(file_data.clone(), internal_path.to_string());
 
@@ -210,7 +210,7 @@ fn generate_blang_json(path: String, internal_path: String, out_path: String) {
         }
     }
 
-    let mut out_file = File::create(&out_path).expect("Failed to open file for reading.");
+    let mut out_file = File::create(&out_path).expect(format!("Failed to open {} for writing.", out_path).as_str());
     out_file.write_all(j.as_bytes()).unwrap();
 
     println!("Succesfully generated blang's JSON in {}.", out_path);
@@ -222,9 +222,9 @@ fn generate_strings_json(path: String, out_path: String) {
         return;
     }
 
-    let mut file = File::open(&path).expect("Failed to open file for reading.");
+    let mut file = File::open(&path).expect(format!("Failed to open {} for reading.", path).as_str());
     let mut blang_json_string = String::new();
-    file.read_to_string(&mut blang_json_string).expect("Failed to read file.");
+    file.read_to_string(&mut blang_json_string).expect(format!("Failed to read from {}.", path).as_str());
 
     let blang_json: FullBlangJson = serde_jsonrc::from_str(&blang_json_string).unwrap_or_else(|_| {
         let empty_blang_json = FullBlangJson {
@@ -273,7 +273,7 @@ fn generate_strings_json(path: String, out_path: String) {
         }
     }
 
-    let mut out_file = File::create(&out_path).expect("Failed to open file for reading.");
+    let mut out_file = File::create(&out_path).expect(format!("Failed to open {} for writing.", out_path).as_str());
     out_file.write_all(j.as_bytes()).unwrap();
 
     println!("Succesfully generated string mod JSON in {}.", out_path);
@@ -285,9 +285,9 @@ fn add_new_string(path: String, identifier: String) {
         return;
     }
 
-    let mut file = File::open(&path).expect("Failed to open file for reading.");
+    let mut file = File::open(&path).expect(format!("Failed to open {} for reading.", path).as_str());
     let mut blang_json_string = String::new();
-    file.read_to_string(&mut blang_json_string).expect("Failed to read file.");
+    file.read_to_string(&mut blang_json_string).expect(format!("Failed to read from {}.", path).as_str());
 
     let mut blang_json: BlangJson = serde_jsonrc::from_str(&blang_json_string).unwrap_or_else(|_| {
         let empty_blang_json = BlangJson {
@@ -324,8 +324,8 @@ fn add_new_string(path: String, identifier: String) {
         return;
     }
 
-    let mut out_file = File::create(&path).expect("Failed to open file for writing.");
-    out_file.write_all(j.as_bytes()).expect("Failed to write new string to file.");
+    let mut out_file = File::create(&path).expect(format!("Failed to open {} for writing.", path).as_str());
+    out_file.write_all(j.as_bytes()).expect(format!("Failed to write to {}.", path).as_str());
 
     println!("Succesfully added {} to {}.", identifier, path);
     exit(0);
@@ -342,9 +342,9 @@ fn modified_blang_to_json(modified_path: String, vanilla_path: String, internal_
         return;
     }
 
-    let mut vanilla_file = File::open(&vanilla_path).expect("Failed to open file for reading.");
+    let mut vanilla_file = File::open(&vanilla_path).expect(format!("Failed to open {} for reading.", vanilla_path).as_str());
     let mut vanilla_file_data: Vec<u8> = Vec::new();
-    vanilla_file.read_to_end(&mut vanilla_file_data).expect("Failed to read file.");
+    vanilla_file.read_to_end(&mut vanilla_file_data).expect(format!("Failed to read from {}.", vanilla_path).as_str());
 
     let vanilla_blang_bytes = id_crypt(vanilla_file_data.clone(), internal_path.to_string());
 
@@ -370,9 +370,9 @@ fn modified_blang_to_json(modified_path: String, vanilla_path: String, internal_
 
     let vanilla_strings = parse_blang(vanilla_blang_bytes, is_new_format);
 
-    let mut modified_file = File::open(&modified_path).expect("Failed to open file for reading.");
+    let mut modified_file = File::open(&modified_path).expect(format!("Failed to open {} for reading.", modified_path).as_str());
     let mut modified_file_data: Vec<u8> = Vec::new();
-    modified_file.read_to_end(&mut modified_file_data).expect("Failed to read file.");
+    modified_file.read_to_end(&mut modified_file_data).expect(format!("Failed to read from {}.", modified_path).as_str());
 
     let modified_blang_bytes = id_crypt(modified_file_data.clone(), internal_path.to_string());
 
@@ -452,7 +452,7 @@ fn modified_blang_to_json(modified_path: String, vanilla_path: String, internal_
         }
     }
 
-    let mut out_file = File::create(&out_path).expect("Failed to open file for reading.");
+    let mut out_file = File::create(&out_path).expect(format!("Failed to open {} for writing.", out_path).as_str());
     out_file.write_all(j.as_bytes()).unwrap();
 
     println!("Succesfully generated string mod JSON in {}.", out_path);
