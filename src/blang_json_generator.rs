@@ -460,7 +460,7 @@ fn modified_blang_to_json(modified_path: String, vanilla_path: String, internal_
 }
 
 fn read_line() -> String {
-    let line: String;
+    let mut line: String;
 
     if env::consts::OS == "windows" {
         line = read!("{}\r\n");
@@ -468,6 +468,8 @@ fn read_line() -> String {
     else {
         line = read!("{}\n");
     }
+
+    line = line.trim_matches('\"').to_string();
 
     return line;
 }
