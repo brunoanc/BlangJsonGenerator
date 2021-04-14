@@ -1,6 +1,6 @@
 [package]
 name = "blang_json_generator"
-version = "1.0.0"
+version = "1.1.0"
 authors = ["PowerBall253 <brunoanconasala@gmail.com>"]
 edition = "2018"
 

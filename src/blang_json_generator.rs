@@ -476,7 +476,7 @@ fn read_line() -> String {
 
 fn main() {
     loop {
-        println!("\nBlangJsonGenerator v1.0 by PowerBall253\n");
+        println!("\nBlangJsonGenerator v1.1 by PowerBall253\n");
         println!("1. Generate a full blang JSON.");
         println!("2. Generate a string mod JSON using an edited full blang JSON.");
         println!("3. Add a new string to a mod JSON.");
