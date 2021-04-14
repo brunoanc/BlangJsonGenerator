@@ -24,6 +24,7 @@ use std::process::exit;
 use text_io::read;
 use std::io;
 use std::panic;
+use std::env;
 
 type HmacSha256 = Hmac<Sha256>;
 type Aes128Cbc = Cbc<Aes128, Pkcs7>;
@@ -458,6 +459,19 @@ fn modified_blang_to_json(modified_path: String, vanilla_path: String, internal_
     println!("Succesfully generated string mod JSON in {}.", out_path);
 }
 
+fn read_line() -> String {
+    let line: String;
+
+    if env::consts::OS == "windows" {
+        line = read!("{}\r\n");
+    }
+    else {
+        line = read!("{}\n");
+    }
+
+    return line;
+}
+
 fn main() {
     loop {
         println!("\nBlangJsonGenerator v1.0 by PowerBall253\n");
@@ -471,7 +485,7 @@ fn main() {
         loop {
             print!("\nSelect an option: ");
             io::stdout().flush().unwrap();
-            response = read!();
+            response = read_line();
             if response.parse::<u32>().is_ok() && response.parse::<i32>().unwrap() <= 5 {
                 break;
             }
@@ -482,18 +496,18 @@ fn main() {
             1 => {
                 print!("Input the path to the .blang file: ");
                 io::stdout().flush().unwrap();
-                let path: String = read!("{}\n");
+                let path = read_line();
     
                 print!("Input the language name: ");
                 io::stdout().flush().unwrap();
-                let language: String = read!("{}\n");
+                let language = read_line();
                 let mut internal_path = "strings/".to_string();
                 internal_path.push_str(language.as_str());
                 internal_path.push_str(".blang");
     
                 print!("Input the path to the output file: ");
                 io::stdout().flush().unwrap();
-                let out_path: String = read!("{}\n");
+                let out_path = read_line();
     
                 println!("");
     
@@ -502,11 +516,11 @@ fn main() {
             2 => {
                 print!("Input the path to the blang's .json file: ");
                 io::stdout().flush().unwrap();
-                let path: String = read!("{}\n");
+                let path = read_line();
     
                 print!("Input the path to the output file: ");
                 io::stdout().flush().unwrap();
-                let out_path: String = read!("{}\n");
+                let out_path = read_line();
     
                 println!("");
     
@@ -515,11 +529,11 @@ fn main() {
             3 => {
                 print!("Input the path to the mod's .json file: ");
                 io::stdout().flush().unwrap();
-                let path: String = read!("{}\n");
+                let path = read_line();
     
                 print!("Input the name of the string you want to add: ");
                 io::stdout().flush().unwrap();
-                let identifier: String = read!("{}\n");
+                let identifier = read_line();
     
                 println!("");
     
@@ -528,22 +542,22 @@ fn main() {
             4 => {
                 print!("Input the path to the vanilla .blang file: ");
                 io::stdout().flush().unwrap();
-                let vanilla_path: String = read!("{}\n");
+                let vanilla_path = read_line();
     
                 print!("Input the path to the modified .blang file: ");
                 io::stdout().flush().unwrap();
-                let modified_path: String = read!("{}\n");
+                let modified_path = read_line();
     
                 print!("Input the language name: ");
                 io::stdout().flush().unwrap();
-                let language: String = read!("{}\n");
+                let language = read_line();
                 let mut internal_path = "strings/".to_string();
                 internal_path.push_str(language.as_str());
                 internal_path.push_str(".blang");
     
                 print!("Input the path to the output file: ");
                 io::stdout().flush().unwrap();
-                let out_path: String = read!("{}\n");
+                let out_path = read_line();
     
                 println!("");
     
