@@ -482,18 +482,18 @@ fn main() {
             1 => {
                 print!("Input the path to the .blang file: ");
                 io::stdout().flush().unwrap();
-                let path: String = read!();
+                let path: String = read!("{}\n");
     
                 print!("Input the language name: ");
                 io::stdout().flush().unwrap();
-                let language: String = read!();
+                let language: String = read!("{}\n");
                 let mut internal_path = "strings/".to_string();
                 internal_path.push_str(language.as_str());
                 internal_path.push_str(".blang");
     
                 print!("Input the path to the output file: ");
                 io::stdout().flush().unwrap();
-                let out_path: String = read!();
+                let out_path: String = read!("{}\n");
     
                 println!("");
     
@@ -502,11 +502,11 @@ fn main() {
             2 => {
                 print!("Input the path to the blang's .json file: ");
                 io::stdout().flush().unwrap();
-                let path: String = read!();
+                let path: String = read!("{}\n");
     
                 print!("Input the path to the output file: ");
                 io::stdout().flush().unwrap();
-                let out_path: String = read!();
+                let out_path: String = read!("{}\n");
     
                 println!("");
     
@@ -515,11 +515,11 @@ fn main() {
             3 => {
                 print!("Input the path to the mod's .json file: ");
                 io::stdout().flush().unwrap();
-                let path: String = read!();
+                let path: String = read!("{}\n");
     
                 print!("Input the name of the string you want to add: ");
                 io::stdout().flush().unwrap();
-                let identifier: String = read!();
+                let identifier: String = read!("{}\n");
     
                 println!("");
     
@@ -528,22 +528,22 @@ fn main() {
             4 => {
                 print!("Input the path to the vanilla .blang file: ");
                 io::stdout().flush().unwrap();
-                let vanilla_path: String = read!();
+                let vanilla_path: String = read!("{}\n");
     
                 print!("Input the path to the modified .blang file: ");
                 io::stdout().flush().unwrap();
-                let modified_path: String = read!();
+                let modified_path: String = read!("{}\n");
     
                 print!("Input the language name: ");
                 io::stdout().flush().unwrap();
-                let language: String = read!();
+                let language: String = read!("{}\n");
                 let mut internal_path = "strings/".to_string();
                 internal_path.push_str(language.as_str());
                 internal_path.push_str(".blang");
     
                 print!("Input the path to the output file: ");
                 io::stdout().flush().unwrap();
-                let out_path: String = read!();
+                let out_path: String = read!("{}\n");
     
                 println!("");
     
